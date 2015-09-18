@@ -1,4 +1,4 @@
-## Designing a Digital Project: Text Analysis Workshop Notes
+
 
 ### Introduction to Text Analysis: *The Dial* Demo
 These commands must be entered into the Terminal, which is an application included with all Mac operating systems. For them to work, they must be entered exactly (or if you can simply cut and paste if you prefer).
@@ -6,26 +6,29 @@ These commands must be entered into the Terminal, which is an application includ
 #### introduction
 from Text -->
 
-- collection
-- cleanup
+- discover
+- collect
 - augment
-- visualize
+- cleanup
+- explore
 
-to Analysis
+\--> to Analysis
 
-#### exploring data sources
+#### discovery
 - [penn online books catalog](http://onlinebooks.library.upenn.edu/webbin/serial?id=thedial)
 - find where and if a plaintext version exists, [for example](https://ia802708.us.archive.org/5/items/dialjournallitcrit21chicrich/dialjournallitcrit21chicrich_djvu.txt)
-- redirect pattern, e.g.: [archive.org/1/items/dialjournallitcrit21chicrich/dialjournallitcrit21chicrich_djvu.txt](http://archive.org/1/items/dialjournallitcrit21chicrich/dialjournallitcrit21chicrich_djvu.txt)
-- transformed identifiers into the new pattern
+- find the redirect pattern, e.g.: [archive.org/1/items/dialjournallitcrit21chicrich/dialjournallitcrit21chicrich_djvu.txt](http://archive.org/1/items/dialjournallitcrit21chicrich/dialjournallitcrit21chicrich_djvu.txt)
 
-#### data collection (e.g., web-scraping)
+#### collection (e.g., web-scraping)
+- transform identifiers into redirect pattern:
+    - `(^.*?")(.*?)(/details/)(.*)(".*$)`
+    - `$2/1/items/$4/$4_djvu\.txt\n`
 - url transformation from upenn online source html
 - curl script for downloading all the urls:
     - `for url in $(cat <filepath>); do curl -LO $url; done`
     - or `./dial-curl.sh <url_list.txt>`
 
-#### data transformation / augmentation
+#### transformation / augmentation
 - using the [Stanford Named Entity Recognizer](http://nlp.stanford.edu/software/CRF-NER.shtml)
 - you can use the GUI by opening the `ner-gui.command` file
 - but to process a number of texts, you may need to automate
@@ -46,7 +49,7 @@ to Analysis
 
 Checkout the [OpenRefine documentation](https://github.com/OpenRefine/OpenRefine/wiki/Recipes) for further recipes ...
 
-#### visualize
+#### explore
 - carto db
 
 
