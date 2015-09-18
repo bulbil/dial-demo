@@ -3,7 +3,7 @@
 ### Introduction to Text Analysis: *The Dial* Demo
 These commands must be entered into the Terminal, which is an application included with all Mac operating systems. For them to work, they must be entered exactly (or if you can simply cut and paste if you prefer).
 
-#### introduction
+#### OVERVIEW
 from Text -->
 
 - discover
@@ -30,9 +30,12 @@ from Text -->
     - `(^.*?")(.*?)(/details/)(.*)(".*$)`
     - `$2/1/items/$4/$4_djvu\.txt\n`
 - url transformation from upenn online source html
+- `mkdir sample-dir`
+- `cd sample-dir`
 - curl script for downloading all the urls:
     - `for url in $(cat <filepath>); do curl -LO $url; done`
-    - or `./dial-curl.sh <url_list.txt>`
+    - or `../dial-curl.sh <url_list.txt>`
+    - or `../dial-curl.sh ../dial-urls-sample.txt`
 
 #### AUGMENTATION / MODELING
 
@@ -41,6 +44,7 @@ from Text -->
 - using the [Stanford Named Entity Recognizer](http://nlp.stanford.edu/software/CRF-NER.shtml)
 - you can use the GUI by opening the `ner-gui.command` file
 - but to process a number of texts, you may need to automate
+    - `cd sample-dir`
     - `./dial-ner.sh  <ner filepath> <texts file path>`
     - in this case `./dial-ner.sh ~/Applications/stanford-ner-2015-4-20 sample`
 
@@ -53,11 +57,14 @@ from Text -->
 - get rid of untagged words using text filters
     - facet by blank
     - remove matching rows
-- remove punctuation
-- standardize uppercase
 - find unique values
-- use facets, generate subsets of the data
+    - sort by column
+    - reorder rows permanently
+    - edit cells --> blank down
+    - facet by blank
+    - remove matching rows
 - use clustering to disambiguate
+- use facets and export to generate useful subsets
 
 Checkout the [OpenRefine documentation](https://github.com/OpenRefine/OpenRefine/wiki/Recipes) for further recipes ...
 
